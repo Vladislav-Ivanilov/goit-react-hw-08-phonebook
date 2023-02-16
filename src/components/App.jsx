@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { ContactsPage } from '../pages/Contacts';
 import { HomePage } from '../pages/Home';
 import { LoginPage } from 'pages/Login';
+import { NotFoundPage } from 'pages/ErrorPage';
 import { RegistrationPage } from 'pages/Register';
 import { RestrictedRoute } from './RestrictedRoute';
 import { Layout } from './Layout.jsx/Layout';
@@ -35,6 +36,7 @@ export const App = () => {
             }
           />
         </Route>
+        <Route element={<NotFoundPage />} path="*" />
       </Routes>
     </>
   );
