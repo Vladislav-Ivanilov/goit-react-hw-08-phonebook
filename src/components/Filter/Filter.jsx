@@ -1,12 +1,10 @@
-import { setContactFilter } from '../../Redux/filterSlice';
-
 import { useDispatch, useSelector } from 'react-redux';
-import { WrapFilter, FilterLabel, FilterInput } from '../PhoneBook.styled';
-import { getContactsFilter } from 'components/Redux/selector';
+import { selectContactsFilter } from '../../redux/filter/selector';
+import { WrapFilter, FilterLabel, FilterInput } from './Filter.styled';
 
 export default function Filter() {
   const dispatch = useDispatch();
-  const filter = useSelector(getContactsFilter);
+  const filter = useSelector(selectContactsFilter);
 
   return (
     <WrapFilter>
@@ -16,7 +14,7 @@ export default function Filter() {
         name="filter"
         id="filter"
         value={filter}
-        onInput={e => dispatch(setContactFilter(e.target.value))}
+        onInput={e => dispatch(selectContactsFilter(e.target.value))}
       />
     </WrapFilter>
   );

@@ -1,12 +1,19 @@
-import { Formik } from 'formik';
-import * as Yup from 'yup';
+import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 import { customAlphabet } from 'nanoid';
-import { getContacts } from '../../Redux/selector';
-import { Forma, Wrap, Label, Input, ErrorMes, Btn } from '../PhoneBook.styled';
-import { addContact } from 'components/Redux/contactsOperation';
+import { addContact } from '../../redux/contacts/operation';
+import { selectContacts } from 'redux/contacts/selector';
+import {
+  Forma,
+  Wrap,
+  Label,
+  Input,
+  ErrorMes,
+  Btn,
+} from './PhoneBookForm.styled';
 
 const nanoid = customAlphabet('1234567890', 3);
 
@@ -23,13 +30,13 @@ const initialValues = {
 
 export default function PhoneBookForm() {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
 
   const handleSubmit = (values, { resetForm }) => {
     const newContact = {
       id: 'id' + nanoid(),
-      name: values.name,
-      phone: values.number,
+      name: values.name.trim(),
+      number: values.number,
     };
 
     if (contacts.find(contact => contact.name === newContact.name)) {
