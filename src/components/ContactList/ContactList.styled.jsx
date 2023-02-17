@@ -23,3 +23,9 @@ export const Name = styled.span`
   font-size: 16px;
   font-weight: 600;
 `;
+
+export const NotFound = styled.p`
+  text-align: center;
+  color: var(--primary-text-color);
+  font-weight: 500;
+`;

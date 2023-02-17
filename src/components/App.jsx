@@ -1,4 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { refreshUser } from '../redux/auth/operation';
+import { useAuth } from 'hooks';
 import { ContactsPage } from '../pages/Contacts';
 import { HomePage } from '../pages/Home';
 import { LoginPage } from 'pages/Login';
@@ -9,7 +13,16 @@ import { Layout } from './Layout.jsx/Layout';
 import { PrivateRoute } from './PrivateRoute';
 
 export const App = () => {
-  return (
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
     <>
       <Routes>
         <Route path="/" element={<Layout />}>

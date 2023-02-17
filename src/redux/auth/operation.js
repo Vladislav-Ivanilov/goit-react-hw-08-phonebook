@@ -53,6 +53,8 @@ export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, { rejectWithValue, getState }) => {
     const { token } = getState().auth;
+    console.log(token);
+
     if (!token) {
       return rejectWithValue('Ops...');
     }
