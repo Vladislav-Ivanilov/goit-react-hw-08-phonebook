@@ -1,24 +1,16 @@
 import styled from 'styled-components';
 
-export const WrapFilter = styled.div`
+export const FilterBlock = styled.div`
   display: flex;
   flex-direction: column;
-  width: 200px;
-  margin-top: 20px;
-`;
-
-export const FilterLabel = styled.label`
-  color: #004971;
-  font-size: 18px;
-  font-weight: 600;
+  align-items: center;
 `;
 
 export const FilterInput = styled.input`
-  background-color: #848d8d;
-  border: none;
+  width: 200px;
+  height: 25px;
+  margin: 10px 0;
   outline: transparent;
-  padding: 10px;
-  margin: 0;
-  border-radius: 3px;
-  margin-top: 15px;
+  border: 2px solid var(--primary-text-color);
+  border-radius: 5px;
 `;

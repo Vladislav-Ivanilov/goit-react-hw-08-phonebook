@@ -1,19 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
-import { Formik } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { customAlphabet } from 'nanoid';
 import { addContact } from '../../redux/contacts/operation';
 import { selectContacts } from 'redux/contacts/selector';
-import {
-  Forma,
-  Wrap,
-  Label,
-  Input,
-  ErrorMes,
-  Btn,
-} from './PhoneBookForm.styled';
+import { Button } from '../App.styled';
+import { Container, Section, BlockForm, Label, Input } from '../App.styled';
+import { ErrorMes } from './PhoneBookForm.styled';
 
 const nanoid = customAlphabet('1234567890', 3);
 
@@ -48,28 +43,29 @@ export default function PhoneBookForm() {
   };
 
   return (
-    <>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={handleSubmit}
-        validationSchema={schema}
-      >
-        <Forma>
-          <Wrap>
-            <Label htmlFor="name">Name</Label>
-            <Input name="name" type="text" id="name" />
-            <ErrorMes name="name" component="div"></ErrorMes>
-          </Wrap>
+    <Container>
+      <Section>
+        <Formik
+          initialValues={initialValues}
+          onSubmit={handleSubmit}
+          validationSchema={schema}
+        >
+          <Form>
+            <BlockForm>
+              <Label htmlFor="name">Name</Label>
+              <Input name="name" type="text" id="name" />
+              <ErrorMes name="name" component="div"></ErrorMes>
 
-          <Wrap>
-            <Label htmlFor="number">Number</Label>
-            <Input name="number" type="tel" id="number" />
-            <ErrorMes name="number" component="div"></ErrorMes>
-          </Wrap>
-          <Btn type="submit">Add contact</Btn>
-        </Forma>
-      </Formik>
-      <ToastContainer />
-    </>
+              <Label htmlFor="number">Number</Label>
+              <Input name="number" type="tel" id="number" />
+              <ErrorMes name="number" component="div"></ErrorMes>
+
+              <Button type="submit">Add contact</Button>
+            </BlockForm>
+          </Form>
+        </Formik>
+        <ToastContainer />
+      </Section>
+    </Container>
   );
 }

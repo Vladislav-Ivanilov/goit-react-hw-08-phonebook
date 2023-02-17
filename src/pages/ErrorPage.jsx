@@ -1,8 +1,16 @@
+import { Container, Section } from '../components/App.styled';
+import { ErrorPage, ErrorPageText, Link } from './pages.styled';
+
 export const NotFoundPage = () => {
   return (
-    <>
-      <p>Uppppppssssssssssss!</p>
-      <p>There is no such page</p>
-    </>
+    <Container>
+      <Section>
+        <ErrorPage>
+          <ErrorPageText>OOOOOOpppssssssssssss!</ErrorPageText>
+          <ErrorPageText>There is no such page</ErrorPageText>
+          <Link to={'/'}>Phone book</Link>
+        </ErrorPage>
+      </Section>
+    </Container>
   );
 };
